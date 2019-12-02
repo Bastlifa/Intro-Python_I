@@ -23,16 +23,26 @@ import sys
 import calendar
 from datetime import datetime
 
+instructions = "Call the function with (optional) integer month, (optionally) followed by a space and integer year."
+
 today = datetime.today()
 
 cal = calendar.TextCalendar()
 
-if len(sys.argv) < 2:
-  cal.prmonth(today.year, today.month)
-elif len(sys.argv) == 2:
-  cal.prmonth(today.year, int(sys.argv[1]))
-elif len(sys.argv) == 3:
-  cal.prmonth(int(sys.argv[2]), int(sys.argv[1]))
-else:
-  print("""Call the function with (optional) integer month, 
-(optionally) followed by a space and integer year.""")
+year = today.year
+month = today.month
+
+def erroneous_input():
+  print(instructions)
+  exit()
+
+if len(sys.argv) >= 2:
+  month = sys.argv[1]
+if len(sys.argv) == 3:
+  month = sys.argv[1]
+  year = sys.argv[2]
+
+try:
+  cal.prmonth(int(year), int(month))
+except:
+  erroneous_input()
