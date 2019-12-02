@@ -35,4 +35,4 @@ elif len(sys.argv) == 3:
   cal.prmonth(int(sys.argv[2]), int(sys.argv[1]))
 else:
   print("""Call the function with (optional) integer month, 
-(optionally) followed by a space, then integer year.""")
+(optionally) followed by a space and integer year.""")
